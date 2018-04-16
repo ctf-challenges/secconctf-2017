@@ -1,0 +1,9 @@
+Upload two files satisfy following conditions:
+
+ - file1 != file2
+ - SHA1(file1) == SHA1(file2)
+ - SHA256(file1) <> SHA256(file2)
+ - 2017KiB < sizeof(file1) < 2018KiB
+ - 2017KiB < sizeof(file2) < 2018KiB
+
+* 1KiB = 1024 bytes

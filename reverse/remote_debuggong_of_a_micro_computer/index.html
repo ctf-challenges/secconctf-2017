@@ -1,0 +1,113 @@
+
+<!-- saved from url=(0055)http://kozos.jp/seccon/2016/final/gdb-server/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body>
+<center>
+<h2>
+Shortest debugger operation challenge on many architectures
+</h2>
+
+<h3>
+Many remote debugging servers are running on port 10000, 10001, 10002...
+</h3>
+
+<h3>
+<a href="http://kozos.jp/seccon/2016/final/gdb-server/info.html">Information page</a>
+<br>
+<a href="http://kozos.jp/seccon/2016/final/gdb-server/flag.txt">Flag page</a>
+</h3>
+
+<table width="500"><tbody><tr><td>
+
+<center><h3>CONNECT TO THE SERVER</h3></center>
+<ul>
+<li>Connect to the server and input the GDB remote serial protocol directly.
+<pre>Example:
+
+$ echo '+$g#67+' | nc &lt;server&gt; 10000
+</pre>
+</li></ul>
+
+<p>
+</p><center><h3>ATTACK POINTS</h3></center>
+<ul>
+<li>Files named "word.txt" are located in
+some servers in the program's current directory.
+</li><li>You can obtain an attack keyword by reading "word.txt".
+</li><li>Submit the attack keyword to the score board. (ATTACK POINTS)
+</li></ul>
+
+<p>
+</p><center><h3>DEFENSE POINTS</h3></center>
+<ul>
+<li>Write your team's defense keyword to "flag.txt".
+</li><li>You can see the keyword wrote in "flag.txt"
+    at the <a href="http://kozos.jp/seccon/2016/final/gdb-server/info.html">information page</a> in realtime.
+</li><li>The keyword wrote in "flag.txt" is registered with the
+    <a href="http://kozos.jp/seccon/2016/final/gdb-server/flag.txt">flag page</a> periodically. (DEFENSE POINTS)
+</li></ul>
+
+<p>
+</p><center><h3>LIMIT OF INPUT SIZE</h3></center>
+<ul>
+<li>The server gets input until the limit of size.
+</li><li>The limit of size decreases and returns
+    to the maximum value periodically.
+</li><li>When the limit of size returns to the maximum value,
+    the keyword wrote in "flag.txt" is registered with the
+    <a href="http://kozos.jp/seccon/2016/final/gdb-server/flag.txt">flag page</a>.
+</li><li>You can see the limit of size at the
+    <a href="http://kozos.jp/seccon/2016/final/gdb-server/info.html">information page</a> in realtime.
+<p>
+</p><center>
+Rotation of the limit
+<table><tbody><tr><td>
+<pre>maximum value ----&gt; ...decreasing periodically... ----&gt; minimum value
+      ^                      ^          |                     |
+      |                      |          v                     |
+      |                       &lt;---------                      |
+      |                                                       |
+      |                                                       v
+       &lt;--------- register flag.txt to the flag page &lt;--------
+</pre>
+</td></tr></tbody></table>
+</center>
+</li></ul>
+
+<p>
+</p><center><h3>OPERATION</h3></center>
+<ul>
+<li>If other team wrote the defense keyword to "flag.txt",
+    overwrite it by your team's defense keyword.
+</li><li>Interfere with other teams to erase other team's defense keyword
+    from "flag.txt", trancate it, remove it, or other many ways...
+</li><li>But, you cannot operate the server if your input is
+    greater than the limit of size.
+</li><li>To operate the server, overwrite "flag.txt", and interfere with other teams
+    as long as possible, make shortest input.
+</li></ul>
+
+<p>
+</p><center><h3>INFORMATION</h3></center>
+<ul>
+<li>The servers are running on the simulator in <a href="http://kozos.jp/seccon/2016/final/gdb-server/gdb-7.12.tar.gz">gdb-7.12</a> with some special patches.
+</li><li>This system is based on Linux.
+</li></ul>
+
+<p>
+</p><center><h3>REFERENCE</h3></center>
+<ul>
+<li>Assembly samples for many architectures: <a href="http://kozos.jp/seccon/2016/final/gdb-server/cross-gcc4-20130826.zip">cross-gcc4</a>
+</li></ul>
+
+<p>
+</p><center><h3>NETWORK CONNECTION</h3></center>
+<ul>
+<li>A long connection is disconnected automatically. (several seconds)
+</li><li>A request of a connection in a short interval is ignored. (several seconds)
+</li></ul>
+
+</td></tr></tbody></table>
+
+</center>
+
+</body></html>
